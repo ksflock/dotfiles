@@ -1,0 +1,11 @@
+# Matlab like prompt
+PS1(">> ")
+# Octave working direectory
+cd ~/code/octave
+clc;
+
+" Use vim as editor
+edit moed sync
+edit home .
+edit editor 'vim > /dev/tty 2>&1 < /dev/tty %s'
+
