@@ -128,6 +128,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'drmingdrmer/xptemplate'
+Plugin 'octave.vim--'              "octave syntax and omnicomplete
+Plugin 'baruchel/vim-notebook'     "Integrate octave, maxima, R and others with vim.
+
 "Plugin 'Xolox/vim-misc'
 "Plugin 'Xolox/vim-notes'
 
@@ -153,6 +157,20 @@ if isdirectory(expand("~/.vim/bundle/nerdtree"))
 endif
 " "}}}
 "let g:notes_directory = ['~/VimNotes']
+let g:xptemplate_minimal_prefix=1
+let g:xptemplate_always_show_pum=1
+
+" Octave syntax and omnicomplete
+augroup filetypedetect
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup end
+
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype octave
+        \ if &omnifunc=="" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
+endif
 filetype plugin on
 
 
